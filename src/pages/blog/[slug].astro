@@ -12,7 +12,9 @@ const { Content } = await render(post)
 ---
 <BaseLayout title={`${post.data.title} | cecilia`} description={post.data.summary}>
   <main class="post-page">
-    <a class="back-link" href="/blog">← 返回笔记</a>
+    <div class="post-bar">
+      <a class="back-link" href="/blog">← 返回笔记</a>
+    </div>
     <article class="post markdown">
       <Content />
     </article>
