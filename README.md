@@ -2,8 +2,6 @@
 
 cecilia 的个人主页 + 技术博客，基于 **Astro** 构建的纯静态站点，由 GitHub Pages 托管。
 
-**在线访问**：<https://cecilia4412.github.io>
-
 ## 技术栈
 
 - **Astro 5** — 内容驱动的静态站点，默认零 JS
