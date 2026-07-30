@@ -372,7 +372,7 @@ footer a:hover { color: var(--accent); }
   position: fixed;
   left: 50%;
   bottom: 40px;
-  transform: translateX(-50%);
+  transform: translate(-50%, 10px);
   background: var(--surface);
   color: var(--text);
   border: 1px solid var(--border);
@@ -381,11 +381,13 @@ footer a:hover { color: var(--accent); }
   font-size: 14px;
   box-shadow: var(--shadow);
   z-index: 100;
-  animation: toast-in 0.25s ease;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
-@keyframes toast-in {
-  from { opacity: 0; transform: translate(-50%, 10px); }
-  to { opacity: 1; transform: translate(-50%, 0); }
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
 }
 
 /* 戳菲比 */
@@ -963,16 +965,18 @@ footer a:hover { color: var(--accent); }
 
       // 邮箱复制提示
       (function () {
+        let toastEl = null
+        let hideTimer = null
         function showToast(msg) {
-          let t = document.querySelector('.toast')
-          if (!t) {
-            t = document.createElement('div')
-            t.className = 'toast'
-            document.body.appendChild(t)
+          if (!toastEl) {
+            toastEl = document.createElement('div')
+            toastEl.className = 'toast'
+            document.body.appendChild(toastEl)
           }
-          t.textContent = msg
-          t.classList.add('show')
-          setTimeout(() => t && t.classList.remove('show'), 1800)
+          toastEl.textContent = msg
+          toastEl.classList.add('show')
+          clearTimeout(hideTimer)
+          hideTimer = setTimeout(() => toastEl.classList.remove('show'), 2000)
         }
         document.querySelectorAll('.email-link').forEach((a) => {
           a.addEventListener('click', async () => {
