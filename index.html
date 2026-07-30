@@ -627,8 +627,34 @@ footer a:hover { color: var(--accent); }
   color: transparent;
 }
 
+/* 美食画廊 */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 16px;
+  margin-top: 26px;
+}
+.food-item {
+  margin: 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  aspect-ratio: 1 / 1;
+}
+.food-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.45s ease;
+}
+.food-item:hover img { transform: scale(1.07); }
+
 @media (max-width: 720px) {
   .cards { grid-template-columns: 1fr; }
+  .gallery { grid-template-columns: repeat(2, 1fr); gap: 12px; }
   .hero { padding: 60px 0 48px; }
   .hero h1 { font-size: 27px; }
   /* 移动端：菲比回到常规流，与问候文本同行居中（菲比在右）；
@@ -808,6 +834,18 @@ footer a:hover { color: var(--accent); }
             </div>
           </div>
 
+        </div>
+      </section>
+
+      <section id="food" class="reveal">
+        <h2 class="section-title">美食日记</h2>
+        <p class="section-sub">我吃过的，好吃的</p>
+        <div class="gallery">
+          <figure class="food-item"><img src="image/food-01.jpg" alt="美食 1" loading="lazy"></figure>
+          <figure class="food-item"><img src="image/food-02.jpg" alt="美食 2" loading="lazy"></figure>
+          <figure class="food-item"><img src="image/food-03.jpg" alt="美食 3" loading="lazy"></figure>
+          <figure class="food-item"><img src="image/food-04.jpg" alt="美食 4" loading="lazy"></figure>
+          <figure class="food-item"><img src="image/food-05.jpg" alt="美食 5" loading="lazy"></figure>
         </div>
       </section>
 
